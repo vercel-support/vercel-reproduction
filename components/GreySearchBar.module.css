@@ -1,0 +1,43 @@
+.form {
+  background: #f4f4f4;
+  width: 100%;
+}
+
+#input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#input input {
+  border: none;
+  background: #f4f4f4;
+}
+
+#input input:focus {
+  box-shadow: none;
+}
+
+.modeSelector {
+  width: 3em;
+  height: 3em;
+  margin: auto;
+  background-color: #4e7a73;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modeSelectorDropdown {
+  position: absolute;
+  border-radius: 2em;
+  width: 2.3em;
+  text-align: center;
+  animation: 1s ease-in;
+  z-index: 1;
+}
+
+#searchIcon {
+  -webkit-appearance: none;
+}

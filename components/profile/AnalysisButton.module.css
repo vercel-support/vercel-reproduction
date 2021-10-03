@@ -1,0 +1,42 @@
+.button {
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 0.3em 0.8em;
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid #000000;
+  position: relative;
+}
+
+#active {
+  background-color: #56adb24d;
+  border: 1px solid #56adb2;
+}
+
+.dropdown {
+  box-shadow: 0 0 0 0 !important;
+}
+
+#dayAmount {
+  background-color: #56adb24d;
+  border: 1px solid #56adb2;
+}
+
+#dayEngagement {
+  background-color: #f9eded;
+  border-color: #ce2b36;
+}
+
+#weekAmount {
+  background-color: #ece6f5;
+  border-color: #954ce9;
+}
+
+#weekEngagement {
+  background-color: #f5f3d5;
+  border-color: #e6dc25;
+}

@@ -1,0 +1,50 @@
+.container {
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid #398b7f;
+  overflow: auto;
+  background-color: white;
+}
+
+.tableHead {
+  z-index: 2;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  height: 50px;
+  border-bottom: 1px solid #398b7f;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.image {
+  border-radius: 5px;
+}
+
+.imageBox {
+  width: 75px;
+  height: 75px;
+  margin: auto;
+  border-radius: 5px;
+  border: 1px solid #ececec;
+}
+
+@media only screen and (max-width: 1000px) {
+  .imageBox {
+    width: 50px;
+    height: 50px;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .cdnRow span {
+    font-size: 0.8em;
+  }
+
+  .cdnRow .col {
+    padding: 0;
+  }
+}
+

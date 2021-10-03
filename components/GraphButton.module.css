@@ -1,0 +1,102 @@
+.graphButton {
+  background-color: #043d44; /* #323546; */
+  width: 280px;
+  height: 140px;
+  border-radius: 8px;
+  padding: 18px;
+  display: flex;
+  flex-direction: row;
+  transition: background-color 200ms ease-in;
+}
+
+#reverseGraphButton {
+  background-color: #043d44;
+}
+
+.imageBox {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  margin: 0;
+  background-color: #cecece61;
+  border-radius: 20px;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  background-image: url("/graph-button.svg");
+  background-size: cover;
+  width: 55px;
+  height: 55px;
+}
+
+#reverseImage {
+  background-image: url("/delete.svg");
+}
+
+.imgText {
+  margin-left: 1em;
+  width: 180px;
+}
+
+#reverseImgText {
+  color: white;
+}
+
+#title {
+  color: rgb(209 220 255);
+  margin: 0.1em 0;
+  font-size: 0.9em;
+}
+
+#body {
+  color: white;
+}
+
+.clickable {
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+}
+
+.buttonWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.buttonText {
+  width: 100%;
+  color: white;
+  padding: 0.2em 0.8em;
+  background: transparent;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+.buttonText:hover {
+  box-shadow: 0 0 4px 2px lightgray;
+}
+
+.buttonIcon {
+  position: absolute;
+  right: 0;
+  width: 2em;
+  text-align: center;
+  background: #8fc1c7;
+  margin: auto;
+  padding: 0.2em;
+  border-radius: 1em;
+}
+
+@media only screen and (max-width: 1000px) {
+  .graphButton {
+    width: 100%;
+    height: 120px;
+    margin-top: 1em;
+  }
+}

@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  position: relative;
+}
+
+.greySection {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0;
+}
+
+.analyticsReport {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 0;
+  margin-bottom: 15%;
+}
+
+.background {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  background-color: #efefef;
+  height: 320px;
+}
+
+@media only screen and (max-width: 680px) {
+  .greySection {
+    height: 100%;
+  }
+
+  .background {
+    top: 4em;
+  }
+}

@@ -1,0 +1,13 @@
+.locationContainer {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.locationLink {
+  color: black;
+}
+
+.locationLink:hover {
+  color: black;
+}

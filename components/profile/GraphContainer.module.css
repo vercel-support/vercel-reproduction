@@ -1,0 +1,16 @@
+.graphContainer {
+  height: 630px;
+  width: 95%;
+  right: 0;
+  position: absolute;
+  transform: translate(0, 5em);
+}
+
+@media only screen and (max-width: 680px) {
+  .graphContainer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: auto;
+  }
+}

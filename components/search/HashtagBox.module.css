@@ -1,0 +1,23 @@
+.tagContainer {
+  border: 2px solid #4e7a73;
+  border-radius: 25px;
+  padding: 0.7em 1.5em;
+}
+
+.tagContainer:hover {
+  box-shadow: 0 0 3px 1px #a9dbd3;
+}
+
+.tagLink {
+  color: black;
+  padding: 0 1em;
+}
+
+.tagLink:hover {
+  color: black;
+}
+
+.right {
+  padding-left: 0.8em;
+  float: right;
+}

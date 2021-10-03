@@ -1,0 +1,133 @@
+.graphTitleBox {
+  background-color: #f8fafd;
+  width: 21%;
+  border-left: 4px solid #23dcf5;
+  border-radius: 0 8px 8px 0;
+  height: 50px;
+}
+
+.postHistory {
+  height: 50px;
+  background-color: #337b71;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: nowrap;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.postHistory:hover {
+  background: linear-gradient(
+    30deg,
+    rgb(1 132 134 / 84%) 0%,
+    rgba(28, 116, 102, 0.8799720571822479) 100%
+  );
+}
+
+.postHistory button {
+  color: white;
+}
+
+.postHistory button:hover {
+  color: white;
+}
+
+.buttonRow {
+  width: 65%;
+  margin: auto;
+}
+
+.dropdown {
+  box-shadow: 0 0 0 0 !important;
+}
+
+#graphTitle {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.text {
+  font-size: 18px;
+  line-height: 28px;
+  margin: 0;
+}
+
+.chartWrapper {
+  height: 400px;
+  margin: 1em auto;
+}
+
+.graphBox {
+  width: 65%;
+  position: relative;
+  margin: auto;
+  border-radius: 10px;
+  padding: 1em;
+  background-color: #323546;
+}
+
+#dayAmount {
+  background-color: #e8f5f7;
+  border-color: #23dcf5;
+}
+
+#dayEngagement {
+  background-color: #f9eded;
+  border-color: #ce2b36;
+}
+
+#weekAmount {
+  background-color: #ece6f5;
+  border-color: #954ce9;
+}
+
+#weekEngagement {
+  background-color: #f5f3d5;
+  border-color: #e6dc25;
+}
+
+#locations,
+#hashtags,
+#tags {
+  background-color: #f1fdf8;
+  border-color: #84d2c7;
+}
+
+@media only screen and (max-width: 1000px) {
+  .graphTitleBox {
+    width: auto;
+  }
+
+  .graphBox {
+    width: 100%;
+    padding: 0.2em;
+  }
+
+  .graphBox h5 {
+    font-size: 1em;
+  }
+
+  .graphTextContainer {
+    padding: 0 15px;
+  }
+
+  .buttonRow {
+    width: 100%;
+  }
+
+  .buttonRow button {
+    padding: 0;
+    font-size: 0.9em;
+  }
+
+  .switchAnalysis {
+    padding: 0;
+  }
+
+  .svg {
+    display: none;
+  }
+}
+

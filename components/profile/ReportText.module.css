@@ -1,0 +1,17 @@
+#textContainer {
+  max-width: 300px;
+}
+
+#reportTitle {
+  color: #538980;
+}
+
+.buttonText {
+  text-align: left;
+}
+
+@media only screen and (max-width: 680px) {
+  #textContainer {
+    margin: auto;
+  }
+}

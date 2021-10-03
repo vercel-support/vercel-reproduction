@@ -1,0 +1,22 @@
+.body {
+  background-color: #e6e6e6;
+  border-radius: 20px;
+  padding: 2em;
+}
+
+.date {
+  color: #538980;
+  margin-bottom: 0.3em;
+}
+
+.infoButton {
+  position: absolute;
+  right: 0.8em;
+  top: 0.8em;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.text {
+  max-width: 80%;
+}
