@@ -122,23 +122,6 @@ export default function Profile({ user, firstEntry = false, error = false }) {
     });
   }, [updateStats]);
 
-  // TODO Uncomment for production
-  useEffect(() => {
-    if (firstEntry && profile) {
-      axios
-        .post("/api/create", {
-          type: "profile",
-          entry: profile,
-        })
-        .then((res) => {
-          axios
-            .get(`/profile/${encodeURIComponent(profile.username)}`)
-            .then((_) => console.log("rebuild"));
-        })
-        .catch((err) => console.error(err));
-    }
-  }, []);
-
   useEffect(() => {
     dispatch({
       action: ACTIONS.SORT_TIMELINE,
@@ -148,81 +131,8 @@ export default function Profile({ user, firstEntry = false, error = false }) {
   }, [sort, ascending]);
 
   if (profile) {
-    const loadMore = () => {
-      if (profile.next) {
-        setLoading(true);
-        axios
-          .post("/api/more", {
-            next: profile.next,
-            id: profile.id,
-            hash: profile.hash,
-            next_chunk: profile.next_chunk,
-            follower: profile.follower,
-            batch,
-          })
-          .then((response) => {
-            const nextData = response.data;
-            if (nextData) {
-              setBatch(batch + 1);
-
-              dispatch({
-                user: nextData,
-                sort,
-                ascending,
-                action: ACTIONS.EXTEND_TIMELINE,
-              });
-
-              setLoading(false);
-              setUpdateStats(!updateStats);
-
-              axios
-                .post("/api/update", {
-                  type: "profile",
-                  entry: { username: profile.username, ...nextData },
-                })
-                .then((res) => console.log("updated"))
-                .catch((err) => console.error(err));
-            }
-          })
-          .catch((err) => {
-            setEnd("You reached the end!");
-            setLoading(false);
-          });
-      }
-    };
-
-    const refresh = () => {
-      setLoading(true);
-
-      axios
-        .get(`/api/refresh?username=${profile.username}`)
-        .then((res) => {
-          const { user: usr, hash } = res.data;
-
-          dispatch({
-            user: { ...usr, hash },
-            action: ACTIONS.REFRESH,
-          });
-
-          setLoading(false);
-          setUpdateStats(!updateStats);
-
-          timelineDiv.current.scrollIntoView();
-
-          axios
-            .post("/api/update", {
-              type: "profile",
-              entry: usr,
-              refresh: true,
-            })
-            .then((res) => console.log("refresh"))
-            .catch((err) => console.error(err));
-        })
-        .catch((err) => console.error(err));
-    };
-
     return (
-      <Layout key={user.username} showSearch={true} showGreySearch={true}>
+      <Layout showSearch={true} showGreySearch={true}>
         <Head>
           <title>
             {profile.full_name} (@{profile.username}) Instagram profile with
