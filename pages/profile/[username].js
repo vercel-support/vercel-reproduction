@@ -203,34 +203,6 @@ export default function Profile({ user, firstEntry = false, error = false }) {
                   />
                 </>
               )}
-
-              {loading ? (
-                <Spinner
-                  animation="border"
-                  variant="info"
-                  className="mx-auto mt-5 d-block"
-                />
-              ) : profile.next ? (
-                <button
-                  className="btn my-4 p-2 loadMore"
-                  onClick={loadMore}
-                  type="button"
-                >
-                  Load More
-                </button>
-              ) : !firstEntry ? (
-                <>
-                  <button
-                    className="btn my-4 p-1 loadMore"
-                    onClick={refresh}
-                    type="button"
-                  >
-                    Load more
-                  </button>
-                </>
-              ) : (
-                <p>{end}</p>
-              )}
             </div>
           </div>
         )}
