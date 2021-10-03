@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar";
 import AboveServiceText from "../components/homepage/aboveServiceText";
 import Service from "../components/homepage/service";
 
-import indexUsers from "../utils/users.json";
 import { modeHelper } from "../utils/tags/modeHelper";
 
 import Head from "next/head";
@@ -24,6 +23,7 @@ const ClipboardData = dynamic(() =>
 export default function Home() {
   const router = useRouter();
 
+  const [indexUsers, setIndexUsers] = useState([]);
   const [term, setTerm] = useState("");
 
   const [users, setUsers] = useState([]);
@@ -47,6 +47,19 @@ export default function Home() {
     else if (event.target.value === "@") setMode("profile");
     else setTerm(event.target.value);
   };
+
+  useEffect(async () => {
+    const response = await fetch("/api");
+    const json = await response.json();
+    const users = json.map((node) => {
+      return {
+        username: node.username,
+        picture: node.profile_pic_url,
+      };
+    });
+
+    setIndexUsers(users);
+  }, []);
 
   useEffect(() => {
     const delay = setTimeout(() => {
