@@ -1,0 +1,51 @@
+{
+  "name": "nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "vercel-build": "prisma generate && next build",
+    "prisma:generate": "prisma generate"
+  },
+  "dependencies": {
+    "@next/bundle-analyzer": "^11.1.0",
+    "@prisma/client": "^2.30.3",
+    "abort-controller": "^3.0.0",
+    "autolinker": "^3.14.3",
+    "axios": "^0.21.1",
+    "axios-https-proxy-fix": "^0.17.1",
+    "bootstrap": "^4.5.3",
+    "chart.js": "^2.9.4",
+    "chartjs-plugin-datalabels": "^0.7.0",
+    "cheerio": "^1.0.0-rc.5",
+    "cors": "^2.8.5",
+    "dompurify": "^2.2.6",
+    "http-proxy-agent": "^4.0.1",
+    "https-proxy-agent": "^5.0.0",
+    "lodash": "^4.17.21",
+    "next": "^11.1.2",
+    "node": "^14.17.6",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.4.3",
+    "react-bootstrap-icons": "^1.2.3",
+    "react-chartjs-2": "^2.11.1",
+    "react-dom": "^17.0.2",
+    "react-player": "^2.8.2",
+    "react-responsive-masonry": "^2.1.1",
+    "sass": "^1.32.7",
+    "sharp": "^0.29.1",
+    "swiper": "^6.8.1",
+    "user-agents": "^1.0.590"
+  },
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-next": "11.1.2",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "flow-bin": "^0.152.0",
+    "prisma": "^2.30.3"
+  }
+}

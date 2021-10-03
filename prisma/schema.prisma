@@ -1,0 +1,148 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Profile {
+  id              String?     @unique
+  username        String      @id
+  is_private      Boolean?
+  is_verified     Boolean?
+  full_name       String?
+  biography       String?
+  profile_pic_url String?
+  post_amount     Int?
+  follower        Int?
+  following       Int?
+  imageTags       ImageTags[]
+  nodes           Image[]
+
+  SearchProfiles SearchProfiles[]
+  @@map("profile")
+}
+
+model Location {
+  id             String           @unique
+  name           String           @id
+  slug           String?
+  thumbnail      String?
+  post_count     Int?
+  nodes          Image[]
+  imageLocations ImageLocations[]
+
+  SearchLocations SearchLocations[]
+  @@map("location")
+}
+
+model Hashtag {
+  id            String?         @unique
+  name          String          @id
+  thumbnail     String?
+  post_count    Int?
+  nodes         Image[]
+  imageHashtags ImageHashtags[]
+
+  SearchHashtags SearchHashtags[]
+  @@map("hashtag")
+}
+
+model Image {
+  id              String           @id
+  thumbnail       String
+  shortcode       String           @unique
+  liked           Int
+  comment_count   Int
+  engagement_rate Float?
+  day             Int?
+  hour            Int?
+  date            String
+  caption         String?
+  profile         Profile?         @relation(fields: [profileUsername], references: [username])
+  profileUsername String?
+  hashtag         Hashtag?         @relation(fields: [hashtagName], references: [name])
+  hashtagName     String?
+  location        Location?        @relation(fields: [locationId], references: [id])
+  locationId      String?
+  imageHashtags   ImageHashtags[]
+  imageTags       ImageTags[]
+  imageLocations  ImageLocations[]
+
+  @@index([id, profileUsername])
+  @@index([id, hashtagName])
+  @@index([id, locationId])
+  @@map("image")
+}
+
+// change to implicit many-many
+model Search {
+  term      String            @id
+  profiles  SearchProfiles[]
+  hashtags  SearchHashtags[]
+  locations SearchLocations[]
+
+  @@map("search")
+}
+
+model SearchProfiles {
+  order    Int
+  search   Search  @relation(fields: [term], references: [term])
+  term     String
+  profile  Profile @relation(fields: [username], references: [username])
+  username String
+
+  @@id([term, username])
+}
+
+model SearchHashtags {
+  order   Int
+  search  Search  @relation(fields: [term], references: [term])
+  term    String
+  hashtag Hashtag @relation(fields: [name], references: [name])
+  name    String
+
+  @@id([term, name])
+}
+
+model SearchLocations {
+  order    Int
+  search   Search   @relation(fields: [term], references: [term])
+  term     String
+  location Location @relation(fields: [name], references: [name])
+  name     String
+
+  @@id([term, name])
+}
+
+model ImageLocations {
+  node     Image    @relation(fields: [imageId], references: [id])
+  imageId  String
+  location Location @relation(fields: [name], references: [name])
+  name     String
+
+  @@id([imageId, name])
+}
+
+model ImageHashtags {
+  imageId String
+  name    String
+  count   Int
+  node    Image   @relation(fields: [imageId], references: [id])
+  hashtag Hashtag @relation(fields: [name], references: [name])
+
+  @@id([imageId, name])
+}
+
+model ImageTags {
+  imageId  String
+  username String
+  count    Int
+  node     Image   @relation(fields: [imageId], references: [id])
+  profile  Profile @relation(fields: [username], references: [username])
+
+  @@id([imageId, username])
+}

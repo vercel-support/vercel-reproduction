@@ -1,0 +1,17 @@
+<svg width="420" height="110" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style type="text/css">
+      @font-face {
+        font-family: "M PLUS Rounded 1";
+        src: url(/fonts/MPLUSRounded1c-Black.ttf) format("truetype");
+      }
+  </style>
+  </defs>
+ <g id="Layer_1">
+  <title>Layer 1</title>
+  <rect rx="5" stroke-width="0" id="svg_1" height="14.33373" width="347.33362" y="71.33263" x="11.49974" stroke="#000" fill="#3faeab"/>
+  <text font-style="normal" font-weight="normal" xml:space="preserve" text-anchor="start" font-family="'M PLUS Rounded 1'" font-size="54" id="svg_2" y="78.66632" x="31.49975" stroke-width="0" stroke="#c6f4e8" fill="#000">instasuche</text>
+  <rect rx="5" id="svg_4" height="50" width="49.99987" y="51.33307" x="356.50001" stroke-width="5" stroke="#3faeab" fill="#ffffff"/>
+  <path transform="rotate(90, 321, 77.7496)" id="svg_9" d="m338.74971,30.95741l-9.5217,-9.65471c1.28274,-2.14474 2.03502,-4.65393 2.03636,-7.34468c-0.00134,-7.84869 -6.26941,-14.20568 -14.00596,-14.20839c-7.73788,0.00271 -14.00863,6.3597 -14.00863,14.20703c0,7.84327 6.27075,14.20026 14.00863,14.20026c2.65501,0 5.12964,-0.76278 7.24483,-2.06345l9.52437,9.65607l4.7221,-4.79213zm-30.1565,-17.00075c0.00802,-4.8531 3.87896,-8.77677 8.66386,-8.7876c4.78223,0.01084 8.65585,3.93451 8.66386,8.7876c-0.00935,4.85039 -3.88164,8.77406 -8.66386,8.78489c-4.7849,-0.01084 -8.65585,-3.93451 -8.66386,-8.78489z" stroke-width="2" stroke="#ffffff" fill="#3faeab"/>
+ </g>
+</svg>

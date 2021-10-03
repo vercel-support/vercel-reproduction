@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "es6",
+    "target": "es2020"
+  },
+  "javascript.suggest.autoImports": true,
+  "checkJs": true,
+  "exclude": ["node_modules"]
+}

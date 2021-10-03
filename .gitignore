@@ -1,0 +1,15 @@
+node_modules
+.vscode
+.git
+.env
+.next
+.vercel
+.DS_Store
+.flowconfig
+Dockerfile
+_Dockerfile
+certs
+lists
+docker-entrypoint.sh
+models
+json

@@ -1,0 +1,22 @@
+[
+  { 
+    "username": "instagram",
+    "picture": "/images/instagram.jpg"
+  },
+  { 
+    "username": "cristiano",
+    "picture": "/images/cristiano.jpg"
+  },
+  { 
+    "username": "arianagrande",
+    "picture": "/images/ariana.jpg"
+  },
+  { 
+    "username": "therock",
+    "picture": "/images/therock.jpeg"
+  },
+  { 
+    "username": "kyliejenner",
+    "picture": "/images/kylie.jpg"
+  }
+]
