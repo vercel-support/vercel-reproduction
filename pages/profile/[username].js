@@ -1,25 +1,25 @@
-import ProfileImages from "../../components/ProfileImages";
-import ProfileStats from "../../components/ProfileStats";
-import TimelineSort from "../../components/TimelineSort";
-import ProfileInfo from "../../components/ProfileInfo";
-import Layout from "../../components/Layout";
-import formatNumber from "../../utils/numbers";
-import Spinner from "react-bootstrap/Spinner";
-import { useEffect, useState, useReducer, useMemo, useRef } from "react";
-import { unionBy } from "lodash";
-import Head from "next/head";
-import axios from "axios";
-import { getAnalysisData } from "../../utils/analysisData";
-import { calculateEngagement } from "../../utils/calculateEngagement";
-import { profileData } from "../../utils/db/profileData";
-import { removeEmojis } from "utils/removeEmojis";
-import { getFromKV, uploadToKV } from "utils/kv";
+import ProfileImages from '../../components/ProfileImages';
+import ProfileStats from '../../components/ProfileStats';
+import TimelineSort from '../../components/TimelineSort';
+import ProfileInfo from '../../components/ProfileInfo';
+import Layout from '../../components/Layout';
+import formatNumber from '../../utils/numbers';
+import Spinner from 'react-bootstrap/Spinner';
+import { useEffect, useState, useReducer, useMemo, useRef } from 'react';
+import { unionBy } from 'lodash';
+import Head from 'next/head';
+import axios from 'axios';
+import { getAnalysisData } from '../../utils/analysisData';
+import { calculateEngagement } from '../../utils/calculateEngagement';
+import { profileData } from '../../utils/db/profileData';
+import { removeEmojis } from 'utils/removeEmojis';
+import { getFromKV, uploadToKV } from 'utils/kv';
 
 const ACTIONS = {
-  REFRESH: "REFRESH",
-  EXTEND_TIMELINE: "EXTEND_TIMELINE",
-  SORT_TIMELINE: "SORT_TIMELINE",
-  UPDATE_STATISTICS: "UPDATE_STATISTICS",
+  REFRESH: 'REFRESH',
+  EXTEND_TIMELINE: 'EXTEND_TIMELINE',
+  SORT_TIMELINE: 'SORT_TIMELINE',
+  UPDATE_STATISTICS: 'UPDATE_STATISTICS',
 };
 
 const sortBy = (timeline = [], sort, ascending) => {
@@ -36,8 +36,8 @@ export default function Profile({ user, firstEntry = false, error = false }) {
 
   const reducer = (profile, update) => {
     switch (update.action) {
-      case "REFRESH": {
-        const nodes = unionBy(profile.nodes, update.user.nodes, "id");
+      case 'REFRESH': {
+        const nodes = unionBy(profile.nodes, update.user.nodes, 'id');
 
         return {
           ...update.user,
@@ -50,7 +50,7 @@ export default function Profile({ user, firstEntry = false, error = false }) {
         };
       }
 
-      case "UPDATE_STATISTICS": {
+      case 'UPDATE_STATISTICS': {
         return {
           ...profile,
           ...update.data,
@@ -61,8 +61,8 @@ export default function Profile({ user, firstEntry = false, error = false }) {
           ),
         };
       }
-      case "EXTEND_TIMELINE": {
-        const nodes = unionBy(profile.nodes, update.user.nodes, "id");
+      case 'EXTEND_TIMELINE': {
+        const nodes = unionBy(profile.nodes, update.user.nodes, 'id');
         return {
           ...profile,
           nodes,
@@ -79,7 +79,7 @@ export default function Profile({ user, firstEntry = false, error = false }) {
           },
         };
       }
-      case "SORT_TIMELINE": {
+      case 'SORT_TIMELINE': {
         return {
           ...profile,
           timeline: sortBy(profile.timeline, update.sort, update.ascending),
@@ -97,7 +97,7 @@ export default function Profile({ user, firstEntry = false, error = false }) {
   const [end, setEnd] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [sort, setSort] = useState("id");
+  const [sort, setSort] = useState('id');
   const [ascending, setAscending] = useState(false);
 
   const [profile, dispatch] = useReducer(reducer, user);
@@ -139,8 +139,8 @@ export default function Profile({ user, firstEntry = false, error = false }) {
             posts and videos
           </title>
           <meta
-            key="description"
-            name="description"
+            key='description'
+            name='description'
             content={`View Instagram posts, pictures and videos of ${
               profile.full_name
             } (@${profile.username}) - ${formatNumber(
@@ -150,13 +150,13 @@ export default function Profile({ user, firstEntry = false, error = false }) {
             )} following, ${formatNumber(profile.post_amount)} posts`}
           />
           <meta
-            key="og:title"
-            property="og:title"
+            key='og:title'
+            property='og:title'
             content={`${profile.full_name} (@${profile.username}) Instagram profile with posts and videos`}
           />
           <meta
-            key="og:description"
-            property="og:description"
+            key='og:description'
+            property='og:description'
             content={`View Instagram posts, pictures and videos of ${
               profile.full_name
             } (@${profile.username}) - ${formatNumber(
@@ -166,12 +166,12 @@ export default function Profile({ user, firstEntry = false, error = false }) {
             )} following, ${formatNumber(profile.post_amount)} posts`}
           />
           <meta
-            key="og:image"
-            property="og:image"
+            key='og:image'
+            property='og:image'
             content={profile.profile_pic_url}
           />
           <link
-            rel="canonical"
+            rel='canonical'
             href={`https://${process.env.NEXT_PUBLIC_DOMAIN_NAME}/profile/${profile.username}`}
           />
         </Head>
@@ -181,9 +181,9 @@ export default function Profile({ user, firstEntry = false, error = false }) {
         <ProfileStats data={profile} />
 
         {profile.nodes.length > 0 && (
-          <div className="d-flex w-100 position-relative">
-            <div id="timelineBackground"></div>
-            <div className="profileTimeline" ref={timelineDiv}>
+          <div className='d-flex w-100 position-relative'>
+            <div id='timelineBackground'></div>
+            <div className='profileTimeline' ref={timelineDiv}>
               {profile.timeline?.length > 0 && (
                 <>
                   <TimelineSort
@@ -195,7 +195,7 @@ export default function Profile({ user, firstEntry = false, error = false }) {
 
                   <ProfileImages
                     timeline={profile.timeline}
-                    type="profile"
+                    type='profile'
                     props={{
                       username: profile.username,
                       follower: profile.follower,
@@ -208,7 +208,7 @@ export default function Profile({ user, firstEntry = false, error = false }) {
         )}
       </Layout>
     );
-  } else if (error === "private") {
+  } else if (error === 'private') {
     return (
       <Layout showSearch={true}>
         <Head>
@@ -217,8 +217,8 @@ export default function Profile({ user, firstEntry = false, error = false }) {
             posts and videos
           </title>
           <meta
-            key="description"
-            name="description"
+            key='description'
+            name='description'
             content={`View Instagram posts, pictures and videos of ${
               profile.full_name
             } (@${profile.username}) - ${formatNumber(
@@ -228,13 +228,13 @@ export default function Profile({ user, firstEntry = false, error = false }) {
             )} following, ${formatNumber(profile.post_amount)} posts`}
           />
           <meta
-            key="og:title"
-            property="og:title"
+            key='og:title'
+            property='og:title'
             content={`${profile.full_name} (@${profile.username}) Instagram profile with posts and videos`}
           />
           <meta
-            key="og:description"
-            property="og:description"
+            key='og:description'
+            property='og:description'
             content={`View Instagram posts, pictures and videos of ${
               profile.full_name
             } (@${profile.username}) - ${formatNumber(
@@ -244,28 +244,28 @@ export default function Profile({ user, firstEntry = false, error = false }) {
             )} following, ${formatNumber(profile.post_amount)} posts`}
           />
           <meta
-            key="og:image"
-            property="og:image"
+            key='og:image'
+            property='og:image'
             content={profile.profile_pic_url}
           />
           <link
-            rel="canonical"
+            rel='canonical'
             href={`https://${process.env.NEXT_PUBLIC_DOMAIN_NAME}/profile/${profile.username}`}
           />
         </Head>
 
         <ProfileInfo user={user} />
-        <div className="container-lg profileTimeline text-center">
-          <div className="spacer"></div>
-          <p className="mt-5 text-center">Privates Profil.</p>
+        <div className='container-lg profileTimeline text-center'>
+          <div className='spacer'></div>
+          <p className='mt-5 text-center'>Privates Profil.</p>
           <svg
-            className="lock bi bi-lock"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 16 16"
-            width="40"
+            className='lock bi bi-lock'
+            xmlns='http://www.w3.org/2000/svg'
+            fill='currentColor'
+            viewBox='0 0 16 16'
+            width='40'
           >
-            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
+            <path d='M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z' />
           </svg>
         </div>
       </Layout>
@@ -278,17 +278,16 @@ export async function getStaticProps({ params }) {
   username = removeEmojis(username);
 
   // first kv check
-  let user = await getFromKV("profile", username);
+  let user = await getFromKV('profile', username);
 
   if (user) {
-    console.info("user from kv");
+    console.info('user from kv');
     if (user.is_private) {
       return {
         props: {
           user,
-          error: "private",
+          error: 'private',
         },
-        revalidate: 84600,
       };
     }
 
@@ -296,7 +295,6 @@ export async function getStaticProps({ params }) {
       props: {
         user,
       },
-      revalidate: 600,
     };
   }
 
@@ -308,15 +306,14 @@ export async function getStaticProps({ params }) {
         return {
           props: {
             user,
-            error: "private",
+            error: 'private',
           },
-          revalidate: 84600,
         };
       }
 
       user = {
         ...user,
-        hash: "",
+        hash: '',
         timeline:
           user?.nodes?.slice(0, 24).map((node) => {
             return {
@@ -325,32 +322,30 @@ export async function getStaticProps({ params }) {
             };
           }) ?? [],
         timeRanges: {
-          new: user.nodes?.[0]?.date ?? "",
-          old: user.nodes?.[user.nodes.length - 1]?.date ?? "",
+          new: user.nodes?.[0]?.date ?? '',
+          old: user.nodes?.[user.nodes.length - 1]?.date ?? '',
         },
       };
 
       // upload to kv
-      console.time("create kv data", username);
+      console.time('create kv data', username);
       await uploadToKV({
-        type: "profile",
+        type: 'profile',
         key: username,
         value: user,
       });
-      console.timeEnd("create kv data", username);
+      console.timeEnd('create kv data', username);
 
       return {
         props: {
           user,
         },
-        revalidate: 1,
       };
     }
   } catch (err) {
-    console.error("err:", err);
+    console.error('err:', err);
     return {
       notFound: true,
-      revalidate: 84600,
     };
   }
 }
@@ -358,6 +353,6 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   return {
     paths: [],
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }
